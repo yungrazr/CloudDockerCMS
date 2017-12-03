@@ -212,6 +212,6 @@ def images_remove_all():
 			
 	resp = '{"status": "images removed"}'
 	return Response(response=resp, mimetype="application/json")	
-"""
+
 if __name__ == '__main__':
     app.run()
