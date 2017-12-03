@@ -101,8 +101,8 @@ def containers_index():
 @app.route('/containers/<id>', methods=['GET'])
 def container_specific_show(id):
 	#Inspect a specific container
-	output = docker('inspect', id)
-	resp = json.dumps(output)
+	
+	resp = docker('inspect', id)
 	return Response(response=resp, mimetype="application/json")	
 """
 @app.route('/containers/<id>/logs', methods=['GET'])
