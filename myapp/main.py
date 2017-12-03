@@ -104,7 +104,7 @@ def container_specific_show(id):
 	
 	resp = docker('inspect', id)
 	return Response(response=resp, mimetype="application/json")	
-"""
+
 @app.route('/containers/<id>/logs', methods=['GET'])
 def container_specific_log(id):
 	#Dump specific container logs
@@ -112,7 +112,7 @@ def container_specific_log(id):
 	resp = json.dumps(docker_logs_to_object(id, output))
 
 	return Response(response=resp, mimetype="application/json")
-	
+"""
 @app.route('/images', methods=['GET'])
 def images_index():
 	#List all images
