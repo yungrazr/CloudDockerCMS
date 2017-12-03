@@ -91,11 +91,13 @@ def containers_index():
     curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers | python -mjson.tool
     curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers?state=running | python -mjson.tool
     """
-    if request.args.get('state') == 'running':
+    if request.args.get('state') == 'running': 
         output = docker('ps')
+        resp = json.dumps(docker_ps_to_array(output))
+         
     else:
         output = docker('ps', '-a')
-    resp = json.dumps(docker_ps_to_array(output))
+        resp = json.dumps(docker_ps_to_array(output))
     return Response(response=resp, mimetype="application/json")
 
 @app.route('/containers/<id>', methods=['GET'])
