@@ -37,7 +37,7 @@ def docker(*args):
     process = Popen(cmd, stdout=PIPE, stderr=PIPE)
     stdout, stderr = process.communicate()
     if stderr.decode(encoding='UTF-8').startswith('Error'):
-        print('Error: {0} -> {1}').format(' '.join(cmd), stderr)
+        print('Error: {0} -> {1}'.format(' '.join(cmd), stderr))
     return stderr + stdout
 
 # 
