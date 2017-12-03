@@ -97,14 +97,14 @@ def containers_index():
         output = docker('ps', '-a')
     resp = json.dumps(docker_ps_to_array(output))
     return Response(response=resp, mimetype="application/json")
-"""
+
 @app.route('/containers/<id>', methods=['GET'])
 def container_specific_show(id):
 	#Inspect a specific container
 	output = docker('inspect', id)
 	resp = json.dumps(output)
 	return Response(response=resp, mimetype="application/json")	
-
+"""
 @app.route('/containers/<id>/logs', methods=['GET'])
 def container_specific_log(id):
 	#Dump specific container logs
