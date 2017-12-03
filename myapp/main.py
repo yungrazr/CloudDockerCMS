@@ -112,7 +112,7 @@ def container_specific_log(id):
 	resp = json.dumps(docker_logs_to_object(id, output))
 
 	return Response(response=resp, mimetype="application/json")
-"""
+
 @app.route('/images', methods=['GET'])
 def images_index():
 	#List all images
@@ -212,7 +212,6 @@ def images_remove_all():
 			
 	resp = '{"status": "images removed"}'
 	return Response(response=resp, mimetype="application/json")	
-"""
 
 if __name__ == '__main__':
     app.run()
