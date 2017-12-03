@@ -95,7 +95,7 @@ def containers_index():
         output = docker('ps')
     else:
         output = docker('ps', '-a')
-    resp = json.dumps(decode(encoding='UTF-8').docker_ps_to_array(output))
+    resp = json.dumps(docker_ps_to_array(output))
     return Response(response=resp, mimetype="application/json")
 
 @app.route('/containers/<id>', methods=['GET'])
@@ -121,7 +121,7 @@ def images_index():
     resp = json.dumps(docker_images_to_array(output))
     
     return Response(response=resp, mimetype="application/json")
-	
+"""
 @app.route('/images', methods=['POST'])
 def images_create():
 	#Create Image
@@ -212,6 +212,6 @@ def images_remove_all():
 			
 	resp = '{"status": "images removed"}'
 	return Response(response=resp, mimetype="application/json")	
-
+"""
 if __name__ == '__main__':
     app.run()
