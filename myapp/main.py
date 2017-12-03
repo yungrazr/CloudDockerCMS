@@ -102,14 +102,14 @@ def containers_index():
 def container_specific_show(id):
 	#Inspect a specific container
 	
-	resp = docker('inspect', id)
+	resp = docker('inspect', str(id))
 	return Response(response=resp, mimetype="application/json")	
 
 @app.route('/containers/<id>/logs', methods=['GET'])
 def container_specific_log(id):
 	#Dump specific container logs
-	output = docker('logs', id)
-	resp = json.dumps(docker_logs_to_object(id, output))
+	output = docker('logs', str(id))
+	resp = json.dumps(docker_logs_to_object(str(id), output))
 
 	return Response(response=resp, mimetype="application/json")
 
@@ -157,7 +157,7 @@ def containers_update(id):
 	except:
 		pass
 		
-	resp = '{"id": "' + output + '"}'
+	resp = '{"id": "updated"}'
 	return Response(response=resp, mimetype="application/json")
 
 @app.route('/images/<id>', methods=['PATCH'])
@@ -166,7 +166,7 @@ def images_update(id):
 	body = request.get_json(force=True)
 	tag = body['tag']
     
-	output = docker('tag', id, tag)
+	output = docker('tag', str(id), tag)
 	resp = '{"id": "' + output + '"}'
 	return Response(response=resp, mimetype="application/json")
 	
@@ -175,7 +175,7 @@ def containers_remove(id):
 	#Delete specific container
 	docker('rm', id)
     
-	resp = '{"id": ' + id + ', "status": "Removed"}'
+	resp = '{"id": ' + str(id) + ', "status": "Removed"}'
 	return Response(response=resp, mimetype="application/json")
 
 @app.route('/containers', methods=['DELETE'])
