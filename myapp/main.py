@@ -114,22 +114,6 @@ def container_specific_log(id):
 	resp = json.dumps(docker_logs_to_object(str(id), output))
 
 	return Response(response=resp, mimetype="application/json")
-	
-@app.route('/nodes', methods=['GET'])
-def nodes():
-	#Shows all nodes
-    output = docker('node', 'ls')
-    resp = json.dumps(docker_node_to_array(output))
-    
-    return Response(response=resp, mimetype="application/json")
-
-@app.route('/service', methods=['GET'])
-def service():
-	#Shows all services
-    output = docker('service', 'ls')
-    resp = json.dumps(docker_service_to_array(output))
-
-    return Response(response=resp, mimetype="application/json")
 
 @app.route('/images', methods=['GET'])
 def images_index():
