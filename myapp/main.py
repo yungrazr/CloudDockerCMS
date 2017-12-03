@@ -115,6 +115,7 @@ def container_specific_log(id):
 	
 @app.route('/nodes', methods=['GET'])
 def nodes():
+	#Shows all nodes
     output = docker('node', 'ls')
     resp = json.dumps(docker_node_to_array(output))
     
@@ -122,6 +123,7 @@ def nodes():
 
 @app.route('/service', methods=['GET'])
 def service():
+	#Shows all services
     output = docker('service', 'ls')
     resp = json.dumps(docker_service_to_array(output))
 
