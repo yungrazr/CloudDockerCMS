@@ -93,7 +93,7 @@ def containers_index():
     """
     if request.args.get('state') == 'running': 
         output = docker('ps')
-        resp = json.dumps(docker_ps_to_array(output))
+        resp = json.dumps(docker_ps_to_array(output.decode(encoding='UTF-8')))
          
     else:
         output = docker('ps', '-a')
@@ -111,7 +111,7 @@ def container_specific_show(id):
 def container_specific_log(id):
 	#Dump specific container logs
 	output = docker('logs', str(id))
-	resp = json.dumps(docker_logs_to_object(str(id), output))
+	resp = json.dumps(docker_logs_to_object(str(id), output.decode(encoding='UTF-8')))
 
 	return Response(response=resp, mimetype="application/json")
 
@@ -120,7 +120,7 @@ def images_index():
 	#List all images
 	
     output = docker('images')
-    resp = json.dumps(docker_images_to_array(output))
+    resp = json.dumps(docker_images_to_array(output.decode(encoding='UTF-8')))
     
     return Response(response=resp, mimetype="application/json")
 
@@ -133,7 +133,7 @@ def images_create():
 	docker('build', '-t', 'custom', '.')
 	images = docker('images')
 	
-	resp  = json.dumps(docker_images_to_array(images))
+	resp  = json.dumps(docker_images_to_array(images.decode(encoding='UTF-8')))
 	return Response(response=resp, mimetype="application/json")
 	
 @app.route('/containers', methods=['POST'])
