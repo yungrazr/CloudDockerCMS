@@ -97,7 +97,7 @@ def containers_index():
          
     else:
         output = docker('ps', '-a')
-        resp = json.dumps(docker_ps_to_array(output))
+        resp = json.dumps(docker_ps_to_array(output.decode(encoding='UTF-8')))
     return Response(response=resp, mimetype="application/json")
 
 @app.route('/containers/<id>', methods=['GET'])
