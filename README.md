@@ -9,9 +9,9 @@ Clone this repository and then proceed to build the docker image using the inclu
 Create a swarm and add the worker nodes.
 Then create service using the following command.
 ```
-docker service create --replicas 3 -p 80:8080 --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --constraint 'node.role==manager' --name dockercms cms
+docker service create --replicas 3 -p 8080:8080 --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --constraint 'node.role==manager' --name dockercms cms
 ```
-
+Creates 3 replicas (--replicas), opens up docker socket as a service (--mount) and makes sure service can only run on a manager node (--constraint)
 
 ## Part 1
 

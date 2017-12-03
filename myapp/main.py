@@ -97,7 +97,7 @@ def containers_index():
         output = docker('ps', '-a')
     resp = json.dumps(docker_ps_to_array(output))
     return Response(response=resp, mimetype="application/json")
-
+"""
 @app.route('/containers/<id>', methods=['GET'])
 def container_specific_show(id):
 	#Inspect a specific container
@@ -212,7 +212,7 @@ def images_remove_all():
 			
 	resp = '{"status": "images removed"}'
 	return Response(response=resp, mimetype="application/json")	
-	
+"""
 
 if __name__ == '__main__':
     app.run()
