@@ -3,22 +3,32 @@
 2nd Cloud Computing Assignment
 Daniel Vegera - C15469578
 
-##Part 1
+## Setting up
 
+Clone this repository and then proceed to build the docker image using the included dockerfile in the repository.
+Create a swarm and add the worker nodes.
+Then create service using the following command.
+```
+docker service create --replicas 3 -p 80:8080 --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --constraint 'node.role==manager' --name dockercms cms
+```
+
+
+## Part 1
+
+Use this command to create a manager
 ```
 docker swarm init
 ```
 And then use the given command to create workers
-
 ```
 docker swarm join [OPTIONS] HOST:PORT
 ```
 ![Image 1](/1.png?raw=true "Screenshot")
 
-##Part 2
+## Part 2
 
 
-##Part 3
+## Part 3
 
 ```
 docker service create --detach=true --replicas 3 -p 80:80 --name weba nginx
