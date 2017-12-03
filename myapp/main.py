@@ -121,7 +121,7 @@ def images_index():
     resp = json.dumps(docker_images_to_array(output))
     
     return Response(response=resp, mimetype="application/json")
-"""
+
 @app.route('/images', methods=['POST'])
 def images_create():
 	#Create Image
@@ -143,7 +143,7 @@ def containers_create():
 	
 	resp = '{"id": "' + output + '"}'
 	return Response(response=resp, mimetype="application/json")
-	
+
 @app.route('/containers/<id>', methods=['PATCH'])
 def containers_update(id):
 	#Update container attributes
