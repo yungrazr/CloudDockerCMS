@@ -3,6 +3,9 @@
 2nd Cloud Computing Assignment
 Daniel Vegera - C15469578
 
+https://github.com/yungrazr/CloudDockerCMS
+[Youtube Video](https://www.youtube.com/watch?v=uMqqn6jppjU)
+
 ## Setting up
 
 Clone this repository and then proceed to build the docker image using the included dockerfile in the repository.
